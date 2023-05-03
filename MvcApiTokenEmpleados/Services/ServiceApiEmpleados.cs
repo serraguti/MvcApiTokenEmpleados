@@ -116,5 +116,25 @@ namespace MvcApiTokenEmpleados.Services
                 await this.CallApiAsync<Empleado>(request);
             return empleado;
         }
+
+        //METODO PROTEGIDO PARA RECUPERAR EL PERFIL
+        public async Task<Empleado> GetPerfilEmpleadoAsync
+            (string token)
+        {
+            string request = "/api/empleados/perfilempleado";
+            Empleado empleado = await
+                this.CallApiAsync<Empleado>(request, token);
+            return empleado;
+        }
+
+        //METODO PARA RECUPERAR LOS COMPIS DE TRABAJO
+        public async Task<List<Empleado>> GetCompisCurroAsync
+            (string token)
+        {
+            string request = "/api/empleados/compiscurro";
+            List<Empleado> compis = await
+                this.CallApiAsync<List<Empleado>>(request, token);
+            return compis;
+        }
     }
 }
